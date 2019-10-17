@@ -1,12 +1,19 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const bodyParser = require('body-parser')
+const cors = require('cors')
 const app = express();
+
+app.use(cors())
 
 app.use(bodyParser.json());       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 })); 
+
+app.on('error', function (e) {
+  console.log('error', e)
+});
 
 app.post('/login', (req, res) => {
   const token = jwt.sign({
