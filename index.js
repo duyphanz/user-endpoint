@@ -20,8 +20,8 @@ app.post('/login', (req, res) => {
     exp: Math.floor(Date.now() / 1000) + (60 * 60),
     data: 'foobar'
   }, 'secret');
-
-  if(req.body.username === 'username' && req.body.password === 'password') res.send(token);
+  console.log("req.body", req.body)
+  if(req.body.username === 'username' && req.body.password === 'password') res.send({token});
   else res.status(400).send({message: 'incorrect user'})
 });
 
