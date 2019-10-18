@@ -21,7 +21,7 @@ app.post('/login', (req, res) => {
     data: 'foobar'
   }, 'secret');
   console.log("req.body", req.body)
-  if(req.body.username === 'username' && req.body.password === 'password') res.send({token});
+  if(req.body.username === 'username' && req.body.password === 'password') res.send({token, name: 'Peter', role: 'Admin'});
   else res.status(400).send({message: 'incorrect user'})
 });
 
